@@ -107,40 +107,46 @@ npm run ios
 # Run on Android
 npm run android
 
-# Run on Web (PWA)
+# Run on Web (for testing)
 npm run web
 ```
 
-## PWA Support
+## Building APK for Android
 
-FocusPing is fully configured as a Progressive Web App (PWA)!
-
-### Features:
-- ✅ Install on any device (iOS, Android, Desktop)
-- ✅ Works offline with service worker
-- ✅ Runs like a native app in standalone mode
-- ✅ Dark theme optimized (#000000 background, #8B5CF6 purple)
-- ✅ Local data storage via AsyncStorage
-
-### Build for Production:
+### Prerequisites:
 ```bash
-# Export as PWA
-npx expo export:web
+# Install EAS CLI
+npm install -g eas-cli
 
-# Deploy the 'dist' folder to any hosting:
-# - Vercel (recommended)
-# - Netlify
-# - GitHub Pages
-# - Any static hosting
+# Login to Expo account
+eas login
 ```
 
-### Install as PWA:
-1. Visit the deployed URL
-2. **iOS**: Tap Share → "Add to Home Screen"
-3. **Android**: Tap menu → "Install app"
-4. **Desktop**: Click install icon in address bar
+### Build APK:
+```bash
+# Configure your project (first time only)
+eas build:configure
 
-The app runs exactly like a native app with full offline support!
+# Build APK for Android
+eas build -p android --profile preview
+
+# Or build AAB (for Google Play Store)
+eas build -p android --profile production
+```
+
+### Alternative - Local Build:
+```bash
+# Generate native Android project
+npx expo prebuild
+
+# Build APK locally
+npm run android
+cd android && ./gradlew assembleRelease
+
+# APK location: android/app/build/outputs/apk/release/app-release.apk
+```
+
+The EAS build is recommended as it handles signing and configuration automatically.
 
 ## Technical Details
 

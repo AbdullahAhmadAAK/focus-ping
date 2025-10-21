@@ -1,64 +1,58 @@
 {
-    "expo": {
-        "name": "FocusPing",
-        "slug": "focusping",
-        "version": "1.0.0",
-        "orientation": "portrait",
-        "icon": "./assets/icon.png",
-        "userInterfaceStyle": "light",
-        "newArchEnabled": true,
-        "splash": {
-            "image": "./assets/splash-icon.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#ffffff"
-        },
-        "ios": {
-            "supportsTablet": true,
-            "infoPlist": {
-                "UIBackgroundModes": [
-                    "remote-notification"
-                ]
-            }
-        },
-        "android": {
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
-                "backgroundColor": "#ffffff"
-            },
-            "edgeToEdgeEnabled": true,
-            "permissions": [
-                "RECEIVE_BOOT_COMPLETED",
-                "VIBRATE",
-                "SCHEDULE_EXACT_ALARM"
-            ]
-        },
-        "notification": {
-            "icon": "./assets/icon.png",
-            "color": "#8B5CF6"
-        },
-        "plugins": [
-            [
-                "expo-notifications",
-                {
-                    "icon": "./assets/icon.png",
-                    "color": "#8B5CF6"
-                }
-            ]
-        ],
-        "web": {
-            "favicon": "./assets/favicon.png",
-            "name": "FocusPing",
-            "shortName": "FocusPing",
-            "lang": "en",
-            "scope": "/",
-            "startUrl": "/",
-            "backgroundColor": "#000000",
-            "themeColor": "#8B5CF6",
-            "display": "standalone",
-            "orientation": "portrait",
-            "dir": "auto",
-            "preferRelatedApplications": false,
-            "bundler": "metro"
+  "expo": {
+    "name": "FocusPing",
+    "slug": "focusping",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "remote-notification"
+        ]
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "SCHEDULE_EXACT_ALARM"
+      ],
+      "package": "com.abdullahahmadaak.focusping"
+    },
+    "notification": {
+      "icon": "./assets/icon.png",
+      "color": "#8B5CF6"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "color": "#8B5CF6"
         }
+      ]
+    ],
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bca565a8-d43c-45e3-b6e8-fd14ee2a330b"
+      }
     }
+  }
 }

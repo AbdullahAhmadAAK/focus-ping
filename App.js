@@ -956,7 +956,7 @@ export default function App() {
                 </View>
             </View>
 
-            <View style={styles.mainContainer}>
+            <ScrollView style={styles.mainContainer} contentContainerStyle={styles.mainContent}>
                 <View style={styles.trackingToggleCard}>
                     <View style={styles.trackingToggleHeader}>
                         <View style={styles.trackingToggleContent}>
@@ -995,81 +995,74 @@ export default function App() {
                         </TouchableOpacity>
                     </View>
                 )}
-            </View>
 
-            {isTracking && (
-                <View style={styles.trackingContainer}>
-                    <View style={styles.statusCard}>
-                        <View style={styles.statusRow}>
-                            <Text style={styles.statusLabel}>Tracking Mode:</Text>
-                            <View style={styles.statusBadge}>
-                                <View style={styles.statusDot} />
-                                <Text style={styles.statusText}>Active</Text>
+                {isTracking && (
+                    <>
+                        <View style={styles.statusCard}>
+                            <View style={styles.statusRow}>
+                                <Text style={styles.statusLabel}>Tracking Mode:</Text>
+                                <View style={styles.statusBadge}>
+                                    <View style={styles.statusDot} />
+                                    <Text style={styles.statusText}>Active</Text>
+                                </View>
+                            </View>
+
+
+                            <View style={styles.statusRow}>
+                                <Text style={styles.statusLabel}>Tracked:</Text>
+                                <Text style={styles.statusValue}>{getFilledSlotsCount()} / {timeSlots.length}</Text>
+                            </View>
+
+                            <View style={styles.statusRow}>
+                                <Text style={styles.statusLabel}>Missing:</Text>
+                                <Text style={[styles.statusValue, getEmptySlotsCount() > 0 && styles.warningText]}>
+                                    {getEmptySlotsCount()}
+                                </Text>
                             </View>
                         </View>
 
-                        <View style={styles.notificationInfo}>
-                            <Text style={styles.notificationText}>
-                                🔔 Push notifications enabled - You'll receive reminders every 15 minutes
-                            </Text>
+                        <View style={styles.sleepModeContainer}>
+                            <View style={styles.sleepModeContent}>
+                                <Text style={styles.sleepModeLabel}>Sleep Mode</Text>
+                                <Text style={styles.sleepModeDescription}>
+                                    Auto-fill current slots with "Sleeping"
+                                </Text>
+                            </View>
+                            <Switch
+                                value={isSleepMode}
+                                onValueChange={setIsSleepMode}
+                                trackColor={{ false: '#d1d5db', true: COLORS.accent }}
+                                thumbColor={isSleepMode ? COLORS.primary : '#f3f4f6'}
+                            />
                         </View>
-
-                        <View style={styles.statusRow}>
-                            <Text style={styles.statusLabel}>Tracked:</Text>
-                            <Text style={styles.statusValue}>{getFilledSlotsCount()} / {timeSlots.length}</Text>
-                        </View>
-
-                        <View style={styles.statusRow}>
-                            <Text style={styles.statusLabel}>Missing:</Text>
-                            <Text style={[styles.statusValue, getEmptySlotsCount() > 0 && styles.warningText]}>
-                                {getEmptySlotsCount()}
-                            </Text>
-                        </View>
-                    </View>
-
-                    <View style={styles.sleepModeContainer}>
-                        <View style={styles.sleepModeContent}>
-                            <Text style={styles.sleepModeLabel}>Sleep Mode</Text>
-                            <Text style={styles.sleepModeDescription}>
-                                Auto-fill current slots with "Sleeping"
-                            </Text>
-                        </View>
-                        <Switch
-                            value={isSleepMode}
-                            onValueChange={setIsSleepMode}
-                            trackColor={{ false: '#d1d5db', true: COLORS.accent }}
-                            thumbColor={isSleepMode ? COLORS.primary : '#f3f4f6'}
-                        />
-                    </View>
-
-                    <TouchableOpacity
-                        style={styles.viewSummaryButton2}
-                        onPress={viewSummary}
-                    >
-                        <Text style={styles.viewSummaryButton2Text}>View Summary</Text>
-                    </TouchableOpacity>
-
-                    <View style={styles.bottomLinks}>
-                        <TouchableOpacity
-                            style={styles.linkButton}
-                            onPress={resetDay}
-                        >
-                            <Text style={styles.linkText}>Reset Day</Text>
-                        </TouchableOpacity>
-
-                        <Text style={styles.linkSeparator}>•</Text>
 
                         <TouchableOpacity
-                            style={styles.linkButton}
-                            onPress={goBackToIntro}
+                            style={styles.viewSummaryButton2}
+                            onPress={viewSummary}
                         >
-                            <Text style={styles.linkText}>View Welcome</Text>
+                            <Text style={styles.viewSummaryButton2Text}>View Summary</Text>
                         </TouchableOpacity>
-                    </View>
 
-                    <View style={styles.timelineContainer}>
-                        <Text style={styles.timelineTitle}>Timeline</Text>
-                        <ScrollView style={styles.timeline}>
+                        <View style={styles.bottomLinks}>
+                            <TouchableOpacity
+                                style={styles.linkButton}
+                                onPress={resetDay}
+                            >
+                                <Text style={styles.linkText}>Reset Day</Text>
+                            </TouchableOpacity>
+
+                            <Text style={styles.linkSeparator}>•</Text>
+
+                            <TouchableOpacity
+                                style={styles.linkButton}
+                                onPress={goBackToIntro}
+                            >
+                                <Text style={styles.linkText}>View Welcome Screen</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <View style={styles.timelineContainer}>
+                            <Text style={styles.timelineTitle}>Timeline</Text>
                             {timeSlots.map((slot, index) => {
                                 const status = getSlotStatus(slot, index);
                                 const isCurrent = status === 'current';
@@ -1119,10 +1112,10 @@ export default function App() {
                                     </TouchableOpacity>
                                 );
                             })}
-                        </ScrollView>
-                    </View>
-                </View>
-            )}
+                        </View>
+                    </>
+                )}
+            </ScrollView>
 
             {/* Activity Prompt Modal */}
             <Modal
@@ -1611,13 +1604,17 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         flex: 1,
-        padding: 24,
+    },
+    mainContent: {
+        paddingHorizontal: 24,
+        paddingTop: 24,
+        paddingBottom: 24,
     },
     trackingToggleCard: {
         backgroundColor: COLORS.cardBg,
         borderRadius: 12,
         padding: 20,
-        marginBottom: 20,
+        marginBottom: 0,
         borderWidth: 2,
         borderColor: COLORS.cardBorder,
         borderLeftWidth: 4,
@@ -1727,14 +1724,11 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: '600',
     },
-    trackingContainer: {
-        flex: 1,
-        padding: 16,
-    },
     statusCard: {
         backgroundColor: COLORS.cardBg,
         padding: 16,
         borderRadius: 12,
+        marginTop: 16,
         marginBottom: 16,
         borderWidth: 1,
         borderColor: COLORS.cardBorder,
@@ -1857,21 +1851,18 @@ const styles = StyleSheet.create({
         fontSize: 13,
     },
     timelineContainer: {
-        flex: 1,
         backgroundColor: COLORS.cardBg,
         borderRadius: 12,
         padding: 16,
         borderWidth: 1,
         borderColor: COLORS.cardBorder,
+        marginBottom: 16,
     },
     timelineTitle: {
         fontSize: 18,
         fontWeight: '600',
         color: COLORS.text,
         marginBottom: 12,
-    },
-    timeline: {
-        flex: 1,
     },
     timeSlot: {
         padding: 12,
