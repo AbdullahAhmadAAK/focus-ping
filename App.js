@@ -619,7 +619,7 @@ export default function App() {
                     </TouchableOpacity>
 
                     <View style={styles.onboardingHeader}>
-                        <Text style={styles.onboardingTitle}>TimeBack</Text>
+                        <Text style={styles.onboardingTitle}>FocusPing</Text>
                         <Text style={styles.onboardingSubtitle}>Activity Tracker</Text>
                     </View>
 
@@ -712,7 +712,7 @@ export default function App() {
                 </View>
 
                 <ScrollView style={styles.aboutContainer} contentContainerStyle={styles.aboutContent}>
-                    <Text style={styles.aboutTitle}>TimeBack Methodology</Text>
+                    <Text style={styles.aboutTitle}>FocusPing Methodology</Text>
 
                     <View style={styles.aboutSection}>
                         <Text style={styles.aboutSectionTitle}>The Concept</Text>
@@ -924,7 +924,7 @@ export default function App() {
                 <View style={styles.headerTop}>
                     <View style={styles.headerCenter}>
                         <TouchableOpacity onPress={() => setShowAbout(true)} activeOpacity={0.7}>
-                            <Text style={styles.title}>TimeBack</Text>
+                            <Text style={styles.title}>FocusPing</Text>
                         </TouchableOpacity>
                         <Text style={styles.subtitle}>
                             {trackingDate ? new Date(trackingDate).toLocaleDateString('en-US', {

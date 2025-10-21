@@ -1,7 +1,7 @@
 {
     "expo": {
-        "name": "TimeBack",
-        "slug": "timeback",
+        "name": "FocusPing",
+        "slug": "focusping",
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
@@ -46,7 +46,19 @@
             ]
         ],
         "web": {
-            "favicon": "./assets/favicon.png"
+            "favicon": "./assets/favicon.png",
+            "name": "FocusPing",
+            "shortName": "FocusPing",
+            "lang": "en",
+            "scope": "/",
+            "startUrl": "/",
+            "backgroundColor": "#000000",
+            "themeColor": "#8B5CF6",
+            "display": "standalone",
+            "orientation": "portrait",
+            "dir": "auto",
+            "preferRelatedApplications": false,
+            "bundler": "metro"
         }
     }
 }

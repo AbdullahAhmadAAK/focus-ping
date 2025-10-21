@@ -1,4 +1,4 @@
-# TimeBack
+# FocusPing
 
 A React Native app by DevNauts, inspired by Dan Martell's time audit methodology. Track your daily activities in 15-minute blocks to understand where your time really goes and make better decisions about delegation, automation, and elimination.
 
@@ -41,7 +41,7 @@ A React Native app by DevNauts, inspired by Dan Martell's time audit methodology
 ## How to Use
 
 1. **Welcome Screen** (First Time)
-   - Read about the TimeBack methodology
+   - Read about the FocusPing methodology
    - Learn how 15-minute tracking helps you understand your time
    - Tap "Get Started" to begin or "Learn About This Method" for more details
 
@@ -107,9 +107,40 @@ npm run ios
 # Run on Android
 npm run android
 
-# Run on Web (for testing)
+# Run on Web (PWA)
 npm run web
 ```
+
+## PWA Support
+
+FocusPing is fully configured as a Progressive Web App (PWA)!
+
+### Features:
+- ✅ Install on any device (iOS, Android, Desktop)
+- ✅ Works offline with service worker
+- ✅ Runs like a native app in standalone mode
+- ✅ Dark theme optimized (#000000 background, #8B5CF6 purple)
+- ✅ Local data storage via AsyncStorage
+
+### Build for Production:
+```bash
+# Export as PWA
+npx expo export:web
+
+# Deploy the 'dist' folder to any hosting:
+# - Vercel (recommended)
+# - Netlify
+# - GitHub Pages
+# - Any static hosting
+```
+
+### Install as PWA:
+1. Visit the deployed URL
+2. **iOS**: Tap Share → "Add to Home Screen"
+3. **Android**: Tap menu → "Install app"
+4. **Desktop**: Click install icon in address bar
+
+The app runs exactly like a native app with full offline support!
 
 ## Technical Details
 
@@ -150,5 +181,5 @@ This app is inspired by Dan Martell's "Buy Back Your Time" methodology and produ
 
 ---
 
-**TimeBack** - Built with ❤️ by **DevNauts** using React Native and Expo | Inspired by Dan Martell's "Buy Back Your Time" Methodology
+**FocusPing** - Built with ❤️ by **DevNauts** using React Native and Expo | Inspired by Dan Martell's "Buy Back Your Time" Methodology
 
